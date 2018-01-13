@@ -1,28 +1,20 @@
-import TodoForm from './TodoForm';
+import React from 'react';
 import style from './Todo.css';
 
 class Todo extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
     render() {
+        const {text, id } = this.props.todo;
         return (
-            <div className={style.TodoList}>
-                {this.props.data.map(item => (
-                    <span>
-                        {item.text}
-                        <button className="removeButton" onClick={()=> this.props.remove(item.id)}> Delete </button>
-                    </span>
-                ))}
-            </div>
+            <li>
+                {text}
+                <button className="removeButton" onClick={()=> this.props.removeHandler(id)}>Delete</button>
+            </li>
         );
     }
 }
-
-TodoList.propTypes = {
-  remove: PropTypes.func.isRequired,
-  data: PropTypes.array.isRequired
-};
 
 export default Todo;
