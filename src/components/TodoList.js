@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './TodoList.css';
+import Todo from './Todo';
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -11,10 +12,7 @@ class TodoList extends React.Component {
         return (
             <div className={style.TodoList}>
                 <ul>{this.props.data.map(item => (
-                    <li key={item.id}>
-                        {item.text}
-                        <button className="removeButton" onClick={()=> this.props.remove(item.id)}>Delete</button>
-                    </li>
+                    <Todo key={item.id} todo={item} removeHandler={this.props.remove}/>
                 ))}</ul>
             </div>
         );
